@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block head_title %}Task Update{% endblock head_title %}
+{% block content %}
+    <div class="container px-4 mx-auto py-20">
+        <div class="max-w-xl mx-auto">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Task Title</label>
+                    {{ form.title }}
+                </div>
+                <button type="submit" class="py-3 px-6 bg-slate-800 font-medium text-white rounded">
+                    Update
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

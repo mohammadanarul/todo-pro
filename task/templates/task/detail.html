@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block head_title %}{{ task.title }}{% endblock head_title %}
+{% block content %}
+    <div class="container px-4 mx-auto py-20">
+        <div class="max-w-xl mx-auto">
+            <div>
+                <h1 class="text-4xl font-medium py-5">{{ task.title }}</h1>
+            </div>
+            <div>
+                <h3 class="text-base mb-3">Task Report</h3>
+            </div>
+            <form action="" method="post" class="py-3">
+                {% csrf_token %}
+                <div class="relative mb-4">
+                    <label class="leading-7 text-sm text-gray-600">Task Report</label>
+                    {{ form.description }}
+                </div>
+                <button type="submit" class="py-3 px-6 bg-slate-800 font-medium text-white rounded">
+                    Add
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
