@@ -8,6 +8,15 @@
             </div>
             <div>
                 <h3 class="text-base mb-3">Task Report</h3>
+                <div class="py-5 space-y-2">
+                    
+                    {% for report in task.task_reports.all %}
+                        <div class="p-2 bg-gray-100">
+                            {{ report.description }}
+                        </div>
+                    {% endfor %}
+                        
+                </div>
             </div>
             <form action="" method="post" class="py-3">
                 {% csrf_token %}

@@ -16,5 +16,9 @@ class Task(BaseModel):
 
 
 class TaskReport(BaseModel):
-    task = models.ForeignKey(Task, on_delete=models.CASCADE, null=True, blank=True, related_name='task_description')
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, null=True, blank=True, related_name='task_reports')
     description = models.TextField()
+
+'''
+OneToMany == Foreignkey
+'''

@@ -6,6 +6,15 @@
       <div class="flex flex-col text-center w-full mb-20">
         <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Todo List</h1>
       </div>
+      <form action="{% url 'task-create' %}" method="post" class="flex items-center justify-center space-x-3 py-2">
+          {% csrf_token %}
+          <div class="w-72">
+              <input type="text" name="title" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          </div>
+          <button type="submit" class="py-3 px-6 bg-slate-800 font-medium text-white rounded">
+              Save
+          </button>
+      </form>
       <div class="lg:w-2/3 w-full mx-auto overflow-auto">
         <table class="table-auto w-full text-left whitespace-no-wrap">
           <thead>
@@ -39,17 +48,17 @@
                 </td>
                 <td class="px-4 py-3">{{ task.created_at|date  }}</td>
                 <td class="px-4 py-3">{{ task.updated_at|date }}</td>
-                <td class="px-4 py-3">
+                <td class="px-4 py-3 space-x-3">
                     <a href="{% url 'task-update' task.pk %}" class="py-2 px-4 bg-green-600 text-white rounded">update</a>
-                    <a href="{% url 'task-view' task.pk %}" class="py-2 px-4 bg-green-600 text-white rounded">
+                    <a href="{% url 'task-detail' task.pk %}" class="py-2 px-4 bg-green-600 text-white rounded">
                         view
                     </a>
                     {% if task.is_completed %}
-                        <a href="{% url 'task-completed' task.pk %}" class="py-2 px-4 bg-slate-800 text-white rounded">
+                        <a href="{#% url 'task-completed' task.pk %#}" class="py-2 px-4 bg-slate-800 text-white rounded">
                             Completed
                         </a>
                     {% else %}
-                        <a href="{% url 'task-completed' task.pk %}" class="py-2 px-4 bg-slate-800 text-white rounded">
+                        <a href="{#% url 'task-completed' task.pk %#}" class="py-2 px-4 bg-slate-800 text-white rounded">
                             Incompled
                         </a>
                         {% endif %}
@@ -59,11 +68,6 @@
                 
           </tbody>
         </table>
-      </div>
-      <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto">
-        <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-            Add Task
-        </button>
       </div>
     </div>
   </section>
