@@ -41,10 +41,9 @@ def task_completed_view(request, pk):
     task = get_object_or_404(Task, pk=pk)
     if task.is_completed:
         task.is_completed = False
-        task.save()
     else:
         task.is_completed= True
-        task.save()
+    task.save()
     return redirect(request.META['HTTP_REFERER'])
 
 
